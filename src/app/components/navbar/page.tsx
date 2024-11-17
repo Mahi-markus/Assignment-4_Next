@@ -84,13 +84,13 @@ const Navbar: React.FC = () => {
 
   // Define common classes to avoid repetition
   const linkClass =
-    "px-4 py-3 hover:bg-blue-500 hover:text-white text-gray-800 transition-colors duration-200";
+    "px-4 py-3 hover:bg-blue-500 hover:text-white  text-gray-800 transition-colors duration-200";
   const signInButtonClass =
     "bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-500 transition-colors duration-200";
     const modalClass =
     "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
   // Ensuring modal is on top
-  const modalContentClass = "bg-white p-8 rounded-lg w-96 shadow-lg relative"; // Adjust width for better visibility
+  const modalContentClass = "bg-white p-8 rounded-lg w-96  shadow-lg relative"; // Adjust width for better visibility
   const warningTextClass = "text-red-500 text-sm mb-4";
   const selectClass = "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
 

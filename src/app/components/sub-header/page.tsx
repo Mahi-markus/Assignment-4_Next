@@ -24,28 +24,28 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen-5 bg-gray-10">
       {/* Header */}
-      <header className="flex justify-between items-center mt-8 mx-4">
+      <header className="flex justify-between items-center mt-6 mx-3">
         {/* Back Link */}
         <a
           href="#"
-          className="text-lg font-medium text-gray-800 hover:text-blue-600"
+          className="text-base font-medium text-gray-800 hover:text-blue-600"
         >
           ← All properties
         </a>
 
         {/* Share and Save Buttons */}
-        <div className="flex gap-4">
+        <div className="flex gap-3">
           <button
             onClick={toggleShareModal}
-            className="flex items-center gap-2 px-5 py-2 bg-transparent text-gray-800 border border-black rounded-full text-base hover:bg-blue-600 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-4 py-1.5 text-sm bg-transparent text-gray-800 border border-black rounded-full hover:bg-blue-600 hover:text-white transition-colors"
           >
             <i className="fas fa-share"></i> Share
           </button>
           <button
             onClick={toggleRegionModal}
-            className="flex items-center gap-2 px-5 py-2 bg-transparent text-gray-800 border border-black rounded-full text-base hover:bg-blue-600 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-4 py-1.5 text-sm bg-transparent text-gray-800 border border-black rounded-full hover:bg-blue-600 hover:text-white transition-colors"
           >
             {selectedCountry}
           </button>
@@ -55,26 +55,26 @@ const App: React.FC = () => {
       {/* Region Modal */}
       {isRegionModalOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
           onClick={toggleRegionModal}
         >
           <div
-            className="bg-white rounded-lg shadow-lg w-96 p-6 relative"
+            className="bg-white rounded-lg shadow-md w-80 p-4 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={toggleRegionModal}
-              className="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-black"
+              className="absolute top-2 right-2 text-gray-600 text-xl hover:text-black"
             >
               &times;
             </button>
-            <h3 className="text-lg font-semibold mb-4">Select Region</h3>
-            <ul className="space-y-2">
+            <h3 className="text-base font-semibold mb-3">Select Region</h3>
+            <ul className="space-y-1">
               {["United States", "Canada", "Australia", "India"].map(
                 (country) => (
                   <li
                     key={country}
-                    className={`p-2 cursor-pointer rounded-md ${
+                    className={`p-1 cursor-pointer rounded-md ${
                       selectedCountry === country
                         ? "bg-blue-500 text-white"
                         : "hover:bg-gray-200"
@@ -93,26 +93,26 @@ const App: React.FC = () => {
       {/* Share Modal */}
       {isShareModalOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
           onClick={toggleShareModal}
         >
           <div
-            className="bg-white rounded-lg shadow-lg w-96 p-6 relative"
+            className="bg-white rounded-lg shadow-md w-80 p-4 relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={toggleShareModal}
-              className="absolute top-2 right-2 text-gray-600 text-2xl font-bold hover:text-black"
+              className="absolute top-2 right-2 text-gray-600 text-xl hover:text-black"
             >
               &times;
             </button>
-            <h3 className="text-lg font-semibold mb-2">Share this link</h3>
-            <p className="text-sm text-gray-600 mb-4">
+            <h3 className="text-base font-semibold mb-2">Share this link</h3>
+            <p className="text-sm text-gray-600 mb-3">
               Juneau Vacation Home: Stunning View + Beach Access
             </p>
 
             {/* Share Options */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-2">
               <ShareOption
                 label="Message"
                 imageUrl="./icons/messege_icon.png"
@@ -177,7 +177,7 @@ const ShareOption: React.FC<ShareOptionProps> = ({
       className="flex items-center gap-2 cursor-pointer"
       onClick={onClick || (() => window.open(link, "_blank"))}
     >
-      <img src={imageUrl} alt={label} className="w-6 h-6" />
+      <img src={imageUrl} alt={label} className="w-5 h-5" />
       <span className="text-gray-800 text-sm">{label}</span>
     </div>
   );
