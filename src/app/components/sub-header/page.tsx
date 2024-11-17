@@ -54,7 +54,7 @@ const App: React.FC = () => {
           {/* Love Button */}
           <button
             onClick={toggleLove}
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-black transition-colors bg-transparent text-gray-800"
+            className="flex items-center gap-2 px-4 py-1.5 text-sm bg-transparent text-gray-800 border border-black rounded-full hover:bg-blue-600 hover:text-white transition-colors"
             title="Love"
           >
             <i
