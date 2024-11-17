@@ -5,14 +5,19 @@ import Header from "./components/sub-header/page"
 
 const Home = () => (
   <div>
-    <div>
+    <div  >
     <Navbar />
+    <div   className=" px-20">
     <Header />
+    </div>
+    
     </div>
    
     <main>
       {/* Page content */}
-      <Gallery />
+      <div className=" px-20">
+           <Gallery />
+           </div>
     </main>
   </div>
 );

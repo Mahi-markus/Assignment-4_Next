@@ -1,26 +1,32 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const App: React.FC = () => {
-  const [isRegionModalOpen, setIsRegionModalOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [selectedCountry, setSelectedCountry] = useState("United States");
+  const [isLoved, setIsLoved] = useState(false);
 
-  // Toggle Region Modal
-  const toggleRegionModal = () => {
-    setIsRegionModalOpen(!isRegionModalOpen);
-  };
+  // Load "Loved" state from localStorage on component mount
+  useEffect(() => {
+    const savedLovedState = localStorage.getItem("isLoved");
+    if (savedLovedState) {
+      setIsLoved(JSON.parse(savedLovedState));
+    }
+  }, []);
+
+  // Save "Loved" state to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("isLoved", JSON.stringify(isLoved));
+  }, [isLoved]);
 
   // Toggle Share Modal
   const toggleShareModal = () => {
     setIsShareModalOpen(!isShareModalOpen);
   };
 
-  // Save Selected Region
-  const saveRegion = (country: string) => {
-    setSelectedCountry(country);
-    toggleRegionModal();
+  // Toggle Loved State
+  const toggleLove = () => {
+    setIsLoved((prev) => !prev);
   };
 
   return (
@@ -35,60 +41,30 @@ const App: React.FC = () => {
           ← All properties
         </a>
 
-        {/* Share and Save Buttons */}
+        {/* Share and Love Buttons */}
         <div className="flex gap-3">
+          {/* Share Button */}
           <button
             onClick={toggleShareModal}
             className="flex items-center gap-2 px-4 py-1.5 text-sm bg-transparent text-gray-800 border border-black rounded-full hover:bg-blue-600 hover:text-white transition-colors"
           >
             <i className="fas fa-share"></i> Share
           </button>
+
+          {/* Love Button */}
           <button
-            onClick={toggleRegionModal}
-            className="flex items-center gap-2 px-4 py-1.5 text-sm bg-transparent text-gray-800 border border-black rounded-full hover:bg-blue-600 hover:text-white transition-colors"
+            onClick={toggleLove}
+            className="flex items-center justify-center w-8 h-8 rounded-full border border-black transition-colors bg-transparent text-gray-800"
+            title="Love"
           >
-            {selectedCountry}
+            <i
+              className={`fas fa-heart transition-colors ${
+                isLoved ? "text-red-500" : "text-gray-800"
+              }`}
+            ></i>
           </button>
         </div>
       </header>
-
-      {/* Region Modal */}
-      {isRegionModalOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-10"
-          onClick={toggleRegionModal}
-        >
-          <div
-            className="bg-white rounded-lg shadow-md w-80 p-4 relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={toggleRegionModal}
-              className="absolute top-2 right-2 text-gray-600 text-xl hover:text-black"
-            >
-              &times;
-            </button>
-            <h3 className="text-base font-semibold mb-3">Select Region</h3>
-            <ul className="space-y-1">
-              {["United States", "Canada", "Australia", "India"].map(
-                (country) => (
-                  <li
-                    key={country}
-                    className={`p-1 cursor-pointer rounded-md ${
-                      selectedCountry === country
-                        ? "bg-blue-500 text-white"
-                        : "hover:bg-gray-200"
-                    }`}
-                    onClick={() => saveRegion(country)}
-                  >
-                    {country}
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
-        </div>
-      )}
 
       {/* Share Modal */}
       {isShareModalOpen && (
@@ -138,16 +114,14 @@ const App: React.FC = () => {
                 imageUrl="./icons/twitter_icon.png"
                 link="https://twitter.com/share?url=https://yourwebsite.com"
               />
-              <ShareOption
-                label="Copy link"
-                imageUrl="./icons/copy_link.png"
-                onClick={() => {
-                  navigator.clipboard.writeText(
-                    "https://yourwebsite.com"
-                  );
-                  alert("Link copied to clipboard!");
-                }}
-              />
+             <ShareOption
+  label="Copy link"
+  imageUrl="./icons/copy_link.png"
+  onClick={() => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard!");
+  }}
+/>
             </div>
           </div>
         </div>
