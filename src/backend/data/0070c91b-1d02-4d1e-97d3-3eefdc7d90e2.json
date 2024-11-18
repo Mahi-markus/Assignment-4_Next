@@ -1,0 +1,61 @@
+{
+  "hotelId": "0070c91b-1d02-4d1e-97d3-3eefdc7d90e2",
+  "title": "Luxury Beach",
+  "description": "A beautiful beach resort with luxury rooms1.",
+  "guestCount": 100,
+  "bedroomCount": 50,
+  "bathroomCount": 50,
+  "amenities": [
+    "Free Wi-Fi",
+    "Swimming Pool",
+    "Gym",
+    "Restaurant"
+  ],
+  "hostInfo": "Contact info for the host.",
+  "address": "123 Beach Avenue, Island City",
+  "latitude": 12.345678,
+  "longitude": 98.7654321,
+  "slug": "luxury-beach",
+  "images": [],
+  "rooms": [
+    {
+      "roomSlug": "deluxe-suite",
+      "roomImage": [
+        "http://localhost:3001/images/1731394470206-904463924.jpeg",
+        "http://localhost:3001/images/1731394483051-824441424.jpeg",
+        "http://localhost:3001/images/1731394483052-888191869.jpg",
+        "http://localhost:3001/images/1731472501472-194865936.jpeg",
+        "http://localhost:3001/images/1731472501472-768809764.jpg",
+        "http://localhost:3001/images/1731473628285-685108882.jpeg",
+        "http://localhost:3001/images/1731473628286-386547948.jpg",
+        "http://localhost:3001/images/1731475466787-106417035.jpeg",
+        "http://localhost:3001/images/1731475466787-82195136.jpg",
+        "http://localhost:3001/images/1731479536829-273437194.jpeg",
+        "http://localhost:3001/images/1731479536829-103043623.jpg",
+        "http://localhost:3001/images/1731479847476-668582691.jpeg",
+        "http://localhost:3001/images/1731479847477-208308147.jpg",
+        "http://localhost:3001/images/1731479847479-355676624.jpeg",
+        "http://localhost:3001/images/1731479847479-607757087.jpg",
+        "http://localhost:3001/images/1731479865904-548390143.jpeg",
+        "http://localhost:3001/images/1731479865904-268928406.jpg",
+        "http://localhost:3001/images/1731479865906-103706577.jpeg",
+        "http://localhost:3001/images/1731479865907-563439108.jpg",
+        "http://localhost:3001/images/1731480005591-923266487.jpeg",
+        "http://localhost:3001/images/1731480005592-451945297.jpg",
+        "http://localhost:3001/images/1731484870491-533707693.jpeg",
+        "http://localhost:3001/images/1731484870492-351804562.jpg"
+      ],
+      "roomTitle": "Deluxe Suite",
+      "roomBedroomCount": 2
+    },
+    {
+      "roomSlug": "standard-room",
+      "roomImage": [
+        "http://localhost:3001/images/1731472475634-197247327.jpeg",
+        "http://localhost:3001/images/1731472475634-200810241.jpg"
+      ],
+      "roomTitle": "Standard Room",
+      "roomBedroomCount": 1
+    }
+  ]
+}
