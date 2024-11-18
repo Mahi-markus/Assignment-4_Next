@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Gallery from "../gallery/page";
+import Navbar from '@/app/components/navbar/page';
+import Tabs from '@/app/components/tabs/page';
+import Subheader from '@/app/components/sub-header/page';
+import PropertyDetails from '@/app/components/propertyDetails/page' 
 
-// Define the Room interface
+
 interface Room {
   roomSlug: string;
   roomImage: string[];
@@ -10,7 +15,6 @@ interface Room {
   roomBedroomCount: number;
 }
 
-// Define the Hotel interface
 interface Hotel {
   title: string;
   description: string;
@@ -27,9 +31,10 @@ interface Hotel {
   rooms: Room[];
 }
 
-// The params object is now a Promise and needs to be unwrapped
 const HotelPage = ({ params }: { params: Promise<{ identifier: string }> }) => {
   const [paramsUnwrapped, setParamsUnwrapped] = useState<{ identifier: string } | null>(null);
+  const [hotelData, setHotelData] = useState<Hotel | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const unwrapParams = async () => {
@@ -40,10 +45,7 @@ const HotelPage = ({ params }: { params: Promise<{ identifier: string }> }) => {
     unwrapParams();
   }, [params]);
 
-  const { identifier } = paramsUnwrapped || {}; // Access the identifier once params are unwrapped
-
-  const [hotelData, setHotelData] = useState<Hotel | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { identifier } = paramsUnwrapped || {};
 
   useEffect(() => {
     if (!identifier) return;
@@ -74,39 +76,31 @@ const HotelPage = ({ params }: { params: Promise<{ identifier: string }> }) => {
 
   return (
     <div>
-      <h1>{hotelData.title}</h1>
-      <p>Description: {hotelData.description}</p>
-      <p>Guest Count: {hotelData.guestCount}</p>
-      <p>Bedroom Count: {hotelData.bedroomCount}</p>
-      <p>Bathroom Count: {hotelData.bathroomCount}</p>
-      <p>Amenities: {hotelData.amenities.join(", ")}</p>
-      <p>Host Info: {hotelData.hostInfo}</p>
-      <p>Address: {hotelData.address}</p>
-      <p>Latitude: {hotelData.latitude}</p>
-      <p>Longitude: {hotelData.longitude}</p>
-      <p>Slug: {hotelData.slug}</p>
-      <div>
-        <h2>Images:</h2>
-        {hotelData.images.map((image, index) => (
-          <img key={index} src={image} alt={`Hotel Image ${index + 1}`} width="200" />
-        ))}
-      </div>
-      <div>
-        <h2>Rooms:</h2>
-        {hotelData.rooms.map((room, index) => (
-          <div key={index}>
-            <h3>{room.roomTitle}</h3>
-            <p>Room Slug: {room.roomSlug}</p>
-            <p>Bedroom Count: {room.roomBedroomCount}</p>
-            <div>
-              <h4>Room Images:</h4>
-              {room.roomImage.map((img, imgIndex) => (
-                <img key={imgIndex} src={img} alt={`Room Image ${imgIndex + 1}`} width="200" />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      <Navbar />
+     
+    <div className=" px-20">
+      <Subheader />
+     
+  
+      <Gallery images={hotelData.images} title={hotelData.title} />
+      <Tabs />
+      <PropertyDetails
+          title={hotelData.title}
+          rating={4.5} // Placeholder rating; replace if real rating data is available
+          reviewsCount={20} // Placeholder review count
+          reviewLink="#"
+          bedrooms={hotelData.bedroomCount}
+          bathrooms={hotelData.bathroomCount}
+          sleeps={hotelData.guestCount}
+          size="2000 sq ft" // Replace with actual size data if available
+          amenities={hotelData.amenities.map((amenity) => ({
+            icon: "fas fa-check", // Replace with appropriate icons if needed
+            label: amenity,
+          }))}
+        />
+        
+    </div>
+
     </div>
   );
 };

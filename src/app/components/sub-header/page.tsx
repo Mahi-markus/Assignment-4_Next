@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const App: React.FC = () => {
+const Subheader: React.FC = () => {
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isLoved, setIsLoved] = useState(false);
 
@@ -114,14 +114,14 @@ const App: React.FC = () => {
                 imageUrl="./icons/twitter_icon.png"
                 link="https://twitter.com/share?url=https://yourwebsite.com"
               />
-             <ShareOption
-  label="Copy link"
-  imageUrl="./icons/copy_link.png"
-  onClick={() => {
-    navigator.clipboard.writeText(window.location.href);
-    alert("Link copied to clipboard!");
-  }}
-/>
+              <ShareOption
+                label="Copy link"
+                imageUrl="./icons/copy_link.png"
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  alert("Link copied to clipboard!");
+                }}
+              />
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default Subheader;
 
 // Share Option Component
 interface ShareOptionProps {

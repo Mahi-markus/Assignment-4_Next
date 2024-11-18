@@ -2,11 +2,14 @@
   "hotelId": "0af658ce-11ec-4ff7-9e85-3734d4c6a790",
   "title": "Test Hotel",
   "description": "A nice hotel",
-  "guestCount": 2,
-  "bedroomCount": 1,
-  "bathroomCount": 1,
+  "guestCount": 20,
+  "bedroomCount": 10,
+  "bathroomCount": 10,
   "amenities": [
-    "wifi"
+    "wifi",
+    "fishing",
+    "TV",
+    "Swimming"
   ],
   "hostInfo": {
     "name": "John Doe"
@@ -15,7 +18,13 @@
   "latitude": 40.7128,
   "longitude": -74.006,
   "slug": "test-hotel",
-  "images": [],
+  "images": [
+    "http://localhost:3001/images/1731951259394-641363208.jpg",
+    "http://localhost:3001/images/1731951259395-926743831.jpg",
+    "http://localhost:3001/images/1731951259395-351208099.jpg",
+    "http://localhost:3001/images/1731951302065-562534942.jpg",
+    "http://localhost:3001/images/1731951302066-63326204.jpg"
+  ],
   "rooms": [
     {
       "roomSlug": "room-1",

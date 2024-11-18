@@ -17,7 +17,11 @@
   "longitude": 98.7654321,
   "slug": "luxury-beach",
   "images": [
-    "http://localhost:3001/images/1731426564902-231604549.jpeg"
+    "http://localhost:3001/images/1731426564902-231604549.jpeg",
+    "http://localhost:3001/images/1731945562007-113135847.jpeg",
+    "http://localhost:3001/images/1731945564549-370653760.jpeg",
+    "http://localhost:3001/images/1731945567390-810356411.jpeg",
+    "http://localhost:3001/images/1731945570005-819988035.jpeg"
   ],
   "rooms": [
     {

@@ -38,7 +38,7 @@ const BookingCard = () => {
           Book now
         </button>
         <p className="text-center text-sm text-gray-500 mt-4">
-          You won't be charged yet
+          You wont be charged yet
         </p>
       </div>
     );

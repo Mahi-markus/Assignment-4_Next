@@ -2,15 +2,12 @@
 
 import React, { useState } from "react";
 
-const images = [
-  "/res1.jpg",
-  "/res1.jpg",
-  "/res1.jpg",
-  "/res1.jpg",
-  "/res1.jpg", // Adjust paths as needed
-];
+interface GalleryProps {
+  images: string[];
+  title?: string;
+}
 
-const Gallery: React.FC = () => {
+const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
@@ -32,60 +29,61 @@ const Gallery: React.FC = () => {
   };
 
   const nextImage = () => {
-    if (currentImageIndex < images.length - 1)
+    if (currentImageIndex < totalImages - 1)
       setCurrentImageIndex(currentImageIndex + 1);
   };
 
   return (
     <main className="p-4">
       {/* Gallery */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
-        {/* Main Image */}
-        <div
-          className="cursor-pointer"
-          onClick={() => openLightbox(0)}
-        >
-          <img
-            src={images[0]}
-            alt="Lakeside view"
-            className="rounded-lg object-cover w-full h-80"
-          />
-        </div>
-        {/* Thumbnails */}
-        <div className="grid grid-cols-2 gap-2">
-          {images.slice(1).map((image, index) => (
-            <div
-              key={index}
-              className="cursor-pointer"
-              onClick={() => openLightbox(index + 1)}
-            >
-              <img
-                src={image}
-                alt={`Thumbnail ${index + 1}`}
-                className="rounded-lg object-cover w-full h-40"
-              />
-            </div>
-          ))}
-        </div>
-        {/* Total Images Badge */}
-        <div className="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white text-sm px-3 py-1 rounded-lg flex items-center gap-2">
-          <span>{totalImages}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 10h16M4 14h16M4 18h16"
+      {totalImages > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+          {/* Main Image */}
+          <div className="cursor-pointer" onClick={() => openLightbox(0)}>
+            <img
+              src={images[0]}
+              alt="Main View"
+              className="rounded-lg object-cover w-full h-80"
             />
-          </svg>
+          </div>
+          {/* Thumbnails */}
+          <div className="grid grid-cols-2 gap-2">
+            {images.slice(1).map((image, index) => (
+              <div
+                key={index}
+                className="cursor-pointer"
+                onClick={() => openLightbox(index + 1)}
+              >
+                <img
+                  src={image}
+                  alt={`Thumbnail ${index + 1}`}
+                  className="rounded-lg object-cover w-full h-40"
+                />
+              </div>
+            ))}
+          </div>
+          {/* Total Images Badge */}
+          <div className="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white text-sm px-3 py-1 rounded-lg flex items-center gap-2">
+            <span>{totalImages}</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+              />
+            </svg>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div>No images available.</div>
+      )}
 
       {/* Lightbox */}
       {isLightboxOpen && (
@@ -102,9 +100,11 @@ const Gallery: React.FC = () => {
               {currentImageIndex + 1}/{totalImages}
             </div>
             {/* Title */}
-            <div className="absolute bottom-16 left-0 right-0 text-center text-white text-lg">
-              Juneau Vacation Rental | 2BR | 1BA | 1,115 Sq Ft | Stairs Required
-            </div>
+            {title && (
+              <div className="absolute bottom-16 left-0 right-0 text-center text-white text-lg">
+                {title}
+              </div>
+            )}
           </div>
 
           {/* Close Button */}
