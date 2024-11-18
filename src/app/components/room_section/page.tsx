@@ -1,43 +1,60 @@
+"use client";
+
 import React from "react";
 
-const RoomsSection: React.FC = () => {
+interface Room {
+  roomSlug: string;
+  roomImage: string[];
+  roomTitle: string;
+  roomBedroomCount: number;
+}
+
+interface RoomsSectionProps {
+  rooms: Room[];
+}
+
+const RoomsSection: React.FC<RoomsSectionProps> = ({ rooms }) => {
   return (
     <div className="mt-8 pt-8 border-t border-gray-300">
-      <h2 className="text-xl font-semibold mb-6 text-gray-800">Rooms & beds</h2>
+      <h2 className="text-xl font-semibold mb-6 text-gray-800">Rooms & Beds</h2>
 
-      {/* Bedrooms Info */}
-      <div className="mb-8">
-        <div className="text-lg font-medium mb-4">2 bedrooms (sleeps 4)</div>
-        <div className="flex flex-col space-y-6">
-          {/* Bedroom Details */}
-          {[
-            { name: "Bedroom 1", bed: "1 Queen Bed" },
-            { name: "Bedroom 2", bed: "1 Twin Bed" },
-          ].map((bedroom, index) => (
-            <div key={index} className="flex flex-col">
-              <div className="font-medium mb-2">{bedroom.name}</div>
-              <div className="flex items-center gap-2 text-gray-600">
-                <svg
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2H8V7h8v3z" />
-                </svg>
-                <span>{bedroom.bed}</span>
-              </div>
+      {/* Dynamic Room Rendering */}
+      {rooms.map((room) => (
+        <div key={room.roomSlug} className="mb-8">
+          <div className="text-lg font-medium mb-4">{room.roomTitle}</div>
+          <div className="flex flex-col space-y-4">
+            {/* Bedroom Count */}
+            <div className="flex items-center gap-2 text-gray-600">
+              <svg
+                className="w-5 h-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2H8V7h8v3z" />
+              </svg>
+              <span>{`${room.roomBedroomCount} Beds`}</span>
             </div>
-          ))}
+            {/* Room Images */}
+            <div className="flex items-center gap-3">
+              {room.roomImage.map((imgUrl, imgIndex) => (
+                <img
+                  key={imgIndex}
+                  src={imgUrl}
+                  alt={`${room.roomTitle} Image ${imgIndex + 1}`}
+                  className="w-24 h-16 object-cover rounded-md"
+                />
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
+      ))}
 
-      {/* Bathroom Section */}
+      {/* Static Properties */}
       <div className="mb-8 pb-4 border-b border-gray-300">
         <div className="text-lg font-medium mb-4">1 bathroom</div>
         <div className="text-gray-600">Full Bathroom</div>
       </div>
 
-      {/* Spaces Section */}
       <div className="mb-8">
         <h2 className="text-lg font-medium mb-4">Spaces</h2>
         <div className="flex flex-col space-y-4">

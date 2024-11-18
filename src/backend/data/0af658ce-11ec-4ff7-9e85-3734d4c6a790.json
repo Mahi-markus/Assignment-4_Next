@@ -28,11 +28,15 @@
   "rooms": [
     {
       "roomSlug": "room-1",
-      "roomImage": [
-        "image1.jpg"
-      ],
-      "roomTitle": "Room 1",
-      "roomBedroomCount": 1
+      "roomImage": [],
+      "roomTitle": "Room 2",
+      "roomBedroomCount": 10
+    },
+    {
+      "roomSlug": "room-2",
+      "roomImage": [],
+      "roomTitle": "Room 2",
+      "roomBedroomCount": 10
     }
   ]
 }

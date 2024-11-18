@@ -6,6 +6,8 @@ import Navbar from '@/app/components/navbar/page';
 import Tabs from '@/app/components/tabs/page';
 import Subheader from '@/app/components/sub-header/page';
 import PropertyDetails from '@/app/components/propertyDetails/page' 
+import ExploreArea from '@/app/components/explore_area/page';
+import RoomsSection from '@/app/components/room_section/page';
 
 
 interface Room {
@@ -98,6 +100,9 @@ const HotelPage = ({ params }: { params: Promise<{ identifier: string }> }) => {
             label: amenity,
           }))}
         />
+
+        <ExploreArea />
+        <RoomsSection rooms={hotelData.rooms} />
         
     </div>
 
