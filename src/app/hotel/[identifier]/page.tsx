@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Gallery from "../gallery/page";
+import Gallery from '@/app/components/gallery/page';
 import Navbar from '@/app/components/navbar/page';
 import Tabs from '@/app/components/tabs/page';
 import Subheader from '@/app/components/sub-header/page';
