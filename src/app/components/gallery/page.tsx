@@ -34,34 +34,40 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
   };
 
   return (
-    <main className="p-4">
+    <main className="p-4 relative">
       {/* Gallery */}
       {totalImages > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 relative">
+        <div className="relative flex gap-2">
           {/* Main Image */}
-          <div className="cursor-pointer" onClick={() => openLightbox(0)}>
+          <div className="flex-shrink-0 w-[800px] h-[380px] cursor-pointer py-3 ">
             <img
               src={images[0]}
               alt="Main View"
-              className="rounded-lg object-cover w-full h-80"
+              className="rounded-lg object-cover w-full h-full"
+              onClick={() => openLightbox(0)}
             />
           </div>
+
           {/* Thumbnails */}
-          <div className="grid grid-cols-2 gap-2">
-            {images.slice(1).map((image, index) => (
-              <div
-                key={index}
-                className="cursor-pointer"
-                onClick={() => openLightbox(index + 1)}
-              >
-                <img
-                  src={image}
-                  alt={`Thumbnail ${index + 1}`}
-                  className="rounded-lg object-cover w-full h-40"
-                />
-              </div>
-            ))}
+          <div className="flex-grow overflow-x-auto py-3 flex flex-col justify-between">
+            <div className="grid grid-cols-2 gap-2">
+              {/* Display only first 4 thumbnails, arranged in 2x2 grid */}
+              {images.slice(1, 5).map((image, index) => (
+                <div
+                  key={index}
+                  className="cursor-pointer"
+                  onClick={() => openLightbox(index + 1)}
+                >
+                  <img
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="rounded-lg object-cover w-full h-44" // Reduced height for thumbnails
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+
           {/* Total Images Badge */}
           <div className="absolute bottom-4 right-4 bg-black bg-opacity-75 text-white text-sm px-3 py-1 rounded-lg flex items-center gap-2">
             <span>{totalImages}</span>

@@ -1,51 +1,96 @@
-// app/hotel/[identifier]/page.tsx (using App Directory)
 "use client";
-import { useEffect, useState } from "react";
 
-const HotelPage = ({ params }: { params: { identifier: string } }) => {
-  const { identifier } = params; // Access dynamic parameter from params
+import Gallery from '@/app/components/gallery/page';
+import Navbar from '@/app/components/navbar/page';
+import Tabs from '@/app/components/tabs/page';
+import Subheader from '@/app/components/sub-header/page';
+import PropertyDetails from '@/app/components/propertyDetails/page';
+import ExploreArea from '@/app/components/explore_area/page';
+import RoomsSection from '@/app/components/room_section/page';
 
-  const [hotelData, setHotelData] = useState<any>(null);
-  const [error, setError] = useState<string | null>(null);
+interface Room {
+  roomSlug: string;
+  roomImage: string[];
+  roomTitle: string;
+  roomBedroomCount: number;
+}
 
-  useEffect(() => {
-    if (!identifier) return; // Only fetch when identifier is available
+interface Hotel {
+  title: string;
+  description: string;
+  guestCount: number;
+  bedroomCount: number;
+  bathroomCount: number;
+  amenities: string[];
+  hostInfo: string;
+  address: string;
+  latitude: number;
+  longitude: number;
+  slug: string;
+  images: string[];
+  rooms: Room[];
+}
 
-    const fetchHotelData = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/api/hotel/0af658ce-11ec-4ff7-9e85-3734d4c6a790`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
+export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
+  const staticData: Hotel = {
+    title: "Sample Hotel",
+    description:
+      "Welcome to our static hotel page. This is placeholder content for users without valid data.",
+    guestCount: 4,
+    bedroomCount: 2,
+    bathroomCount: 1,
+    amenities: ["Free WiFi", "Parking", "Air Conditioning", "Swimming Pool"],
+    hostInfo: "Host: Static Host",
+    address: "123 Placeholder Avenue, Imaginary City",
+    latitude: 0,
+    longitude: 0,
+    slug: "static-hotel",
+    images: ["/res1.jpg",
+             "/res1.jpg",
+             "/res1.jpg",
+             "/res1.jpg",
+             "/res1.jpg",
+             "/res1.jpg",
 
-        if (response.ok) {
-          console.log("connection success");
-        }
-        const data = await response.json();
-        setHotelData(data);
-      } catch (err) {
-        setError("Failed to load hotel data");
-      }
-    };
+    ], // Replace with the path to your placeholder image
+    rooms: [
+      {
+        roomSlug: "static-room",
+        roomImage: [], // Replace with placeholder image path
+        roomTitle: "Static Room",
+        roomBedroomCount: 1,
+      },
+    ],
+  };
 
-    fetchHotelData();
-  }, [identifier]);
+  const isStatic = !hotelData;
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!hotelData) {
-    return <div>Loading...</div>;
-  }
+  const dataToRender = isStatic ? staticData : hotelData;
 
   return (
     <div>
-      <h1>{hotelData.name}</h1>
-      <p>{hotelData.description}</p>
-      <p>{hotelData.location}</p>
+      <Navbar />
+      <div className="px-20">
+        <Subheader />
+        <Gallery images={dataToRender.images} title={dataToRender.title} />
+        <Tabs />
+        <PropertyDetails
+          title={dataToRender.title}
+          rating={isStatic ? 4.0 : 4.5} // Static rating for placeholder
+          reviewsCount={isStatic ? 10 : 20} // Static review count for placeholder
+          reviewLink="#"
+          bedrooms={dataToRender.bedroomCount}
+          bathrooms={dataToRender.bathroomCount}
+          sleeps={dataToRender.guestCount}
+          size={isStatic ? "1000 sq ft" : "2000 sq ft"} // Static size for placeholder
+          amenities={dataToRender.amenities.map((amenity) => ({
+            icon: "fas fa-check", // Replace with appropriate icons if needed
+            label: amenity,
+          }))}
+        />
+        <ExploreArea />
+        <RoomsSection rooms={dataToRender.rooms} />
+      </div>
     </div>
   );
-};
-
-export default HotelPage;
+}
