@@ -54,5 +54,6 @@ export default async function Page({
   } catch (error) {
     // If an error occurs (e.g., invalid identifier or network issues), show the 404 page
     return <Custom404 message="The hotel id does not exist." />;
+    console.log(error);
   }
 }
