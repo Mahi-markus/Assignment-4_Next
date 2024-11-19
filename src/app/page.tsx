@@ -7,6 +7,9 @@ import Subheader from '@/app/components/sub-header/page';
 import PropertyDetails from '@/app/components/propertyDetails/page';
 import ExploreArea from '@/app/components/explore_area/page';
 import RoomsSection from '@/app/components/room_section/page';
+import PropertyDetails2 from '@/app/components/property_details_2/page';
+import PropertyManager from '@/app/components/property_manager/page';
+import RentalDetails from '@/app/components/rental_details/page';
 
 interface Room {
   roomSlug: string;
@@ -40,18 +43,18 @@ export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
     bedroomCount: 2,
     bathroomCount: 1,
     amenities: ["Free WiFi", "Parking", "Air Conditioning", "Swimming Pool"],
-    hostInfo: "Host: Static Host",
+    hostInfo: " Static Host",
     address: "123 Placeholder Avenue, Imaginary City",
-    latitude: 0,
-    longitude: 0,
+    latitude: 34.56,
+    longitude: 45.54,
     slug: "static-hotel",
-    images: ["/res1.jpg",
-             "/res1.jpg",
-             "/res1.jpg",
-             "/res1.jpg",
-             "/res1.jpg",
-             "/res1.jpg",
-
+    images: [
+      "/res1.jpg",
+      "/res1.jpg",
+      "/res1.jpg",
+      "/res1.jpg",
+      "/res1.jpg",
+      "/res1.jpg",
     ], // Replace with the path to your placeholder image
     rooms: [
       {
@@ -76,20 +79,54 @@ export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
         <Tabs />
         <PropertyDetails
           title={dataToRender.title}
-          rating={isStatic ? 4.0 : 4.5} // Static rating for placeholder
-          reviewsCount={isStatic ? 10 : 20} // Static review count for placeholder
+          rating={4.5} // Placeholder rating
+          reviewsCount={20} // Placeholder review count
           reviewLink="#"
           bedrooms={dataToRender.bedroomCount}
           bathrooms={dataToRender.bathroomCount}
           sleeps={dataToRender.guestCount}
-          size={isStatic ? "1000 sq ft" : "2000 sq ft"} // Static size for placeholder
+          size="2000 sq ft" // Replace with actual size data
           amenities={dataToRender.amenities.map((amenity) => ({
             icon: "fas fa-check", // Replace with appropriate icons if needed
             label: amenity,
           }))}
         />
-        <ExploreArea />
+        <ExploreArea longitude={dataToRender.longitude} latitude={dataToRender.latitude} />
         <RoomsSection rooms={dataToRender.rooms} />
+        <PropertyDetails2
+          title={dataToRender.title}
+          rating={4.5} // Placeholder rating
+          reviewsCount={20} // Placeholder review count
+          reviewLink="#"
+          bedrooms={dataToRender.bedroomCount}
+          bathrooms={dataToRender.bathroomCount}
+          sleeps={dataToRender.guestCount}
+          guestCount={dataToRender.guestCount}
+          description={dataToRender.description}
+          size="2000 sq ft" // Replace with actual size data
+          amenities={dataToRender.amenities.map((amenity) => ({
+            icon: "fas fa-check", // Replace with appropriate icons if needed
+            label: amenity,
+          }))}
+        />
+        <PropertyManager
+  hostInfo={{ name: dataToRender.hostInfo }} // Pass an object with the 'name' property
+  title={dataToRender.title}
+  rating={4.5} // Placeholder rating
+  reviewsCount={20} // Placeholder review count
+  reviewLink="#"
+  bedrooms={dataToRender.bedroomCount}
+  bathrooms={dataToRender.bathroomCount}
+  sleeps={dataToRender.guestCount}
+  guestCount={dataToRender.guestCount}
+  description={dataToRender.description}
+  size="2000 sq ft" // Replace with actual size data
+  amenities={dataToRender.amenities.map((amenity) => ({
+    icon: "fas fa-check", // Replace with appropriate icons if needed
+    label: amenity,
+  }))}
+/>
+        <RentalDetails hostInfo={{ name: dataToRender.hostInfo }}  />
       </div>
     </div>
   );

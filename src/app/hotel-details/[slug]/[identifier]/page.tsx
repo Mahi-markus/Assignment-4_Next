@@ -1,5 +1,6 @@
 import HotelPage from '@/app/hotel-details/[slug]/[identifier]/HotelPage';
 import { notFound } from 'next/navigation';
+import Custom404 from '@/app/components/custom_404/page';
 
 interface Room {
   roomSlug: string;
@@ -29,36 +30,29 @@ export default async function Page({
 }: {
   params: { slug: string; identifier: string };
 }) {
-  const { slug, identifier } = params;
+  const { slug, identifier } = await params;
 
   try {
+    // Fetch the hotel data from the API using the identifier
     const response = await fetch(`http://localhost:3001/api/hotel/${identifier}`, {
       next: { revalidate: 10 }, // Optional caching control
     });
 
     if (!response.ok) {
-      throw new Error("Invalid identifier");
+      throw new Error("Hotel not found");
     }
 
     const hotelData: Hotel = await response.json();
 
-    // Validate that the slug matches the data
+    // Validate that the slug in the URL matches the one in the fetched data
     if (hotelData.slug !== slug) {
-      return (
-        <div>
-          <h1>Error</h1>
-          <p>Provide an existing slug name or identifier.</p>
-        </div>
-      );
+      return <Custom404 message="The hotel id or slug does not exist." />; // This will trigger the default 404 page in Next.js
     }
 
+    // If everything is okay, render the HotelPage component with the hotel data
     return <HotelPage hotelData={hotelData} />;
   } catch (error) {
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>Provide an existing slug name or identifier.</p>
-      </div>
-    );
+    // If an error occurs (e.g., invalid identifier or network issues), show the 404 page
+    return <Custom404 message="The hotel id does not exist." />;
   }
 }

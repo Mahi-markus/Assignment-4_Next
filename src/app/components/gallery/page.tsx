@@ -35,11 +35,10 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
 
   return (
     <main className="p-4 relative">
-      {/* Gallery */}
       {totalImages > 0 ? (
-        <div className="relative flex gap-2">
+        <div className="relative flex gap-4 flex-col lg:flex-row">
           {/* Main Image */}
-          <div className="flex-shrink-0 w-[800px] h-[380px] cursor-pointer py-3 ">
+          <div className="flex-shrink-0 w-full lg:w-[800px] h-[380px] cursor-pointer py-3">
             <img
               src={images[0]}
               alt="Main View"
@@ -49,9 +48,9 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
           </div>
 
           {/* Thumbnails */}
-          <div className="flex-grow overflow-x-auto py-3 flex flex-col justify-between">
+          <div className="flex-grow py-3">
             <div className="grid grid-cols-2 gap-2">
-              {/* Display only first 4 thumbnails, arranged in 2x2 grid */}
+              {/* Only display up to 4 thumbnails, 2 in each row */}
               {images.slice(1, 5).map((image, index) => (
                 <div
                   key={index}
@@ -61,7 +60,7 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
                   <img
                     src={image}
                     alt={`Thumbnail ${index + 1}`}
-                    className="rounded-lg object-cover w-full h-44" // Reduced height for thumbnails
+                    className="rounded-lg object-cover w-full h-44"
                   />
                 </div>
               ))}
@@ -95,17 +94,14 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
       {isLightboxOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-75 flex justify-center items-center">
           <div className="relative">
-            {/* Lightbox Image */}
             <img
               src={images[currentImageIndex]}
               alt="Lightbox"
               className="max-w-full max-h-screen object-contain"
             />
-            {/* Counter */}
             <div className="absolute bottom-4 right-4 bg-black bg-opacity-50 text-white text-sm px-3 py-1 rounded-lg">
               {currentImageIndex + 1}/{totalImages}
             </div>
-            {/* Title */}
             {title && (
               <div className="absolute bottom-16 left-0 right-0 text-center text-white text-lg">
                 {title}
@@ -113,7 +109,6 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
             )}
           </div>
 
-          {/* Close Button */}
           <button
             onClick={closeLightbox}
             className="absolute top-4 left-4 bg-black bg-opacity-50 text-white p-2 rounded-full"
@@ -121,7 +116,6 @@ const Gallery: React.FC<GalleryProps> = ({ images, title }) => {
             ×
           </button>
 
-          {/* Navigation Buttons */}
           <div className="absolute bottom-8 flex gap-4">
             <button
               onClick={prevImage}

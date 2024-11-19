@@ -9,7 +9,6 @@ const Navbar: React.FC = () => {
   const currencySelectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
-    // Load the country from localStorage or default to United States
     const storedCountry = localStorage.getItem("selectedCountry");
     if (storedCountry) {
       setSelectedCountry(storedCountry);
@@ -19,21 +18,19 @@ const Navbar: React.FC = () => {
   const handleOpenModal = () => {
     const modal = document.getElementById("regionModal");
     if (modal) {
-      modal.style.display = "block"; // Show the modal
+      modal.style.display = "block";
     }
   };
 
   const handleCountryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedCountry = event.target.value;
     setSelectedCountry(selectedCountry);
-    localStorage.setItem("selectedCountry", selectedCountry); // Persist the selected country
+    localStorage.setItem("selectedCountry", selectedCountry);
 
-    // Update the country name in the button
     if (countryButtonRef.current) {
       countryButtonRef.current.textContent = selectedCountry;
     }
 
-    // Dynamically change currency based on selected country
     const currencyMapping: { [key: string]: string } = {
       "portugal": "EUR",
       "us": "USD",
@@ -64,13 +61,12 @@ const Navbar: React.FC = () => {
       "vietnam": "VND",
     };
 
-    // Update the currency select based on the selected country
     if (currencySelectRef.current) {
       const selectedCurrency = currencyMapping[selectedCountry];
       const options = Array.from(currencySelectRef.current.options);
       const selectedOption = options.find((option) => option.value === selectedCurrency);
       if (selectedOption) {
-        currencySelectRef.current.value = selectedCurrency; // Update currency dropdown
+        currencySelectRef.current.value = selectedCurrency;
       }
     }
   };
@@ -78,19 +74,17 @@ const Navbar: React.FC = () => {
   const handleCloseModal = () => {
     const modal = document.getElementById("regionModal");
     if (modal) {
-      modal.style.display = "none"; // Close the modal
+      modal.style.display = "none";
     }
   };
 
-  // Define common classes to avoid repetition
   const linkClass =
-    "px-4 py-3 hover:bg-blue-500 hover:text-white  text-gray-800 transition-colors duration-200";
+    "px-4 py-3 hover:bg-blue-500 hover:text-white text-gray-800 transition-colors duration-200";
   const signInButtonClass =
     "bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-500 transition-colors duration-200";
-    const modalClass =
+  const modalClass =
     "fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50";
-  // Ensuring modal is on top
-  const modalContentClass = "bg-white p-8 rounded-lg w-96  shadow-lg relative"; // Adjust width for better visibility
+  const modalContentClass = "bg-white p-8 rounded-lg w-96 shadow-lg relative";
   const warningTextClass = "text-red-500 text-sm mb-4";
   const selectClass = "block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500";
 
@@ -101,7 +95,7 @@ const Navbar: React.FC = () => {
           <a href="#" className="text-2xl font-bold text-gray-800 hover:text-blue-500">
             Logo
           </a>
-          <ul className="flex space-x-10">
+          <ul className="flex space-x-10 md:space-x-6 sm:space-x-4 md:flex-row sm:flex-col sm:items-center">
             <li>
               <a
                 href="#"
@@ -109,7 +103,7 @@ const Navbar: React.FC = () => {
                 className={classNames(linkClass)}
                 onClick={handleOpenModal}
               >
-                {selectedCountry} {/* Displaying the selected country */}
+                {selectedCountry}
               </a>
             </li>
             <li>
@@ -229,15 +223,6 @@ const Navbar: React.FC = () => {
             <option value="AED">AED</option>
             <option value="VND">VND</option>
           </select>
-
-          <div className="flex justify-end mt-6">
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500"
-              onClick={handleCloseModal}
-            >
-              Save
-            </button>
-          </div>
         </div>
       </div>
     </>

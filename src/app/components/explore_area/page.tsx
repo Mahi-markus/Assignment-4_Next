@@ -1,6 +1,17 @@
 import React from "react";
 
-const ExploreArea: React.FC = () => {
+interface ExploreArea{
+
+  latitude: number;
+  longitude: number;
+
+}
+
+const ExploreArea: React.FC<ExploreArea> = ({
+  latitude,
+  longitude
+
+}) => {
   return (
     <div className="w-3/5 mt-[-3rem] pt-8 border-t border-gray-200">
       <h2 className="text-2xl font-semibold text-transparent-800 mb-6">Explore the area</h2>
@@ -14,10 +25,13 @@ const ExploreArea: React.FC = () => {
         />
         <div className="p-4">
           <h3 className="text-lg font-semibold text-gray-800">Juneau, Alaska</h3>
+          <p>{longitude}<br></br> 
+          {latitude}</p>
           <a
             href="#"
             className="text-blue-600 hover:underline mt-1 inline-block"
           >
+            
             View in a map
           </a>
         </div>
