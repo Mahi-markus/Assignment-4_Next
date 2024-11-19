@@ -6,7 +6,6 @@ import classNames from "classnames";
 const Navbar: React.FC = () => {
   const [selectedCountry, setSelectedCountry] = useState<string>("United States");
   const countryButtonRef = useRef<HTMLAnchorElement>(null);
-  const currencySelectRef = useRef<HTMLSelectElement>(null);
 
   useEffect(() => {
     const storedCountry = localStorage.getItem("selectedCountry");
@@ -30,45 +29,6 @@ const Navbar: React.FC = () => {
     if (countryButtonRef.current) {
       countryButtonRef.current.textContent = selectedCountry;
     }
-
-    const currencyMapping: { [key: string]: string } = {
-      "portugal": "EUR",
-      "us": "USD",
-      "uk": "GBP",
-      "canada": "CAD",
-      "australia": "AUD",
-      "bangladesh": "BDT",
-      "brazil": "BRL",
-      "china": "CNY",
-      "denmark": "DKK",
-      "egypt": "EGP",
-      "france": "EUR",
-      "germany": "EUR",
-      "india": "INR",
-      "japan": "JPY",
-      "mexico": "MXN",
-      "netherlands": "EUR",
-      "norway": "NOK",
-      "russia": "RUB",
-      "saudi_arabia": "SAR",
-      "south_africa": "ZAR",
-      "south_korea": "KRW",
-      "spain": "EUR",
-      "sweden": "SEK",
-      "switzerland": "CHF",
-      "turkey": "TRY",
-      "uae": "AED",
-      "vietnam": "VND",
-    };
-
-    if (currencySelectRef.current) {
-      const selectedCurrency = currencyMapping[selectedCountry];
-      const options = Array.from(currencySelectRef.current.options);
-      const selectedOption = options.find((option) => option.value === selectedCurrency);
-      if (selectedOption) {
-        currencySelectRef.current.value = selectedCurrency;
-      }
-    }
   };
 
   const handleCloseModal = () => {
@@ -77,6 +37,44 @@ const Navbar: React.FC = () => {
       modal.style.display = "none";
     }
   };
+
+  const handleSubmit = () => {
+    // You can add any additional logic before closing the modal if needed
+    handleCloseModal();
+  };
+
+  // Country to Currency mapping
+  const currencyMapping: { [key: string]: string } = {
+    "portugal": "EUR",
+    "us": "USD",
+    "uk": "GBP",
+    "canada": "CAD",
+    "australia": "AUD",
+    "bangladesh": "BDT",
+    "brazil": "BRL",
+    "china": "CNY",
+    "denmark": "DKK",
+    "egypt": "EGP",
+    "france": "EUR",
+    "germany": "EUR",
+    "india": "INR",
+    "japan": "JPY",
+    "mexico": "MXN",
+    "netherlands": "EUR",
+    "norway": "NOK",
+    "russia": "RUB",
+    "saudi_arabia": "SAR",
+    "south_africa": "ZAR",
+    "south_korea": "KRW",
+    "spain": "EUR",
+    "sweden": "SEK",
+    "switzerland": "CHF",
+    "turkey": "TRY",
+    "uae": "AED",
+    "vietnam": "VND",
+  };
+
+  const selectedCurrency = currencyMapping[selectedCountry];
 
   const linkClass =
     "px-4 py-3 hover:bg-blue-500 hover:text-white text-gray-800 transition-colors duration-200";
@@ -107,22 +105,22 @@ const Navbar: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="#" className={classNames(linkClass)}>
+              <a href="#" className={classNames(linkClass)} >
                 Trip Boards
               </a>
             </li>
             <li>
-              <a href="#" className={classNames(linkClass)}>
+              <a href="#" className={classNames(linkClass)} >
                 List Your Property
               </a>
             </li>
             <li>
-              <a href="#" className={classNames(linkClass)}>
+              <a href="#" className={classNames(linkClass)} >
                 Help
               </a>
             </li>
             <li>
-              <a href="#" className={classNames(linkClass)}>
+              <a href="#" className={classNames(linkClass)} >
                 My Trips
               </a>
             </li>
@@ -193,36 +191,16 @@ const Navbar: React.FC = () => {
             <option value="vietnam">Vietnam</option>
           </select>
 
-          <label htmlFor="currencySelect" className="block text-gray-700 mt-4 mb-2">Currency:</label>
-          <select
-            className={selectClass}
-            id="currencySelect"
-            ref={currencySelectRef}
+          <p className="text-gray-700 mt-4">
+            <strong>Selected Currency: </strong> {selectedCurrency}
+          </p>
+
+          <button
+            onClick={handleSubmit}
+            className="mt-4 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-500 transition-colors duration-200"
           >
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            <option value="GBP">GBP</option>
-            <option value="CAD">CAD</option>
-            <option value="AUD">AUD</option>
-            <option value="BDT">BDT</option>
-            <option value="BRL">BRL</option>
-            <option value="CNY">CNY</option>
-            <option value="DKK">DKK</option>
-            <option value="EGP">EGP</option>
-            <option value="INR">INR</option>
-            <option value="JPY">JPY</option>
-            <option value="MXN">MXN</option>
-            <option value="NOK">NOK</option>
-            <option value="RUB">RUB</option>
-            <option value="SAR">SAR</option>
-            <option value="ZAR">ZAR</option>
-            <option value="KRW">KRW</option>
-            <option value="SEK">SEK</option>
-            <option value="CHF">CHF</option>
-            <option value="TRY">TRY</option>
-            <option value="AED">AED</option>
-            <option value="VND">VND</option>
-          </select>
+            Submit
+          </button>
         </div>
       </div>
     </>
