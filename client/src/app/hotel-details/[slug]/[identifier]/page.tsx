@@ -1,5 +1,4 @@
 import HotelPage from '@/app/hotel-details/[slug]/[identifier]/HotelPage';
-import { notFound } from 'next/navigation';
 import Custom404 from '@/app/components/custom_404/page';
 
 interface Room {
@@ -43,6 +42,7 @@ export default async function Page({
     }
 
     const hotelData: Hotel = await response.json();
+   
 
     // Validate that the slug in the URL matches the one in the fetched data
     if (hotelData.slug !== slug) {

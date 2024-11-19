@@ -43,7 +43,7 @@ export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
     bedroomCount: 2,
     bathroomCount: 1,
     amenities: ["Free WiFi", "Parking", "Air Conditioning", "Swimming Pool"],
-    hostInfo: " Static Host",
+    hostInfo: "Static Host",
     address: "123 Placeholder Avenue, Imaginary City",
     latitude: 34.56,
     longitude: 45.54,
@@ -55,11 +55,11 @@ export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
       "/res1.jpg",
       "/res1.jpg",
       "/res1.jpg",
-    ], // Replace with the path to your placeholder image
+    ],
     rooms: [
       {
         roomSlug: "static-room",
-        roomImage: [], // Replace with placeholder image path
+        roomImage: [],
         roomTitle: "Static Room",
         roomBedroomCount: 1,
       },
@@ -73,61 +73,81 @@ export default function HotelPage({ hotelData }: { hotelData?: Hotel }) {
   return (
     <div>
       <Navbar />
-      <div className="px-20">
+      <div className="px-4 sm:px-6 lg:px-20">
         <Subheader />
-        <Gallery images={dataToRender.images} title={dataToRender.title} />
-        <Tabs />
-        <PropertyDetails
-          title={dataToRender.title}
-          rating={4.5} // Placeholder rating
-          reviewsCount={20} // Placeholder review count
-          reviewLink="#"
-          bedrooms={dataToRender.bedroomCount}
-          bathrooms={dataToRender.bathroomCount}
-          sleeps={dataToRender.guestCount}
-          size="2000 sq ft" // Replace with actual size data
-          amenities={dataToRender.amenities.map((amenity) => ({
-            icon: "fas fa-check", // Replace with appropriate icons if needed
-            label: amenity,
-          }))}
-        />
-        <ExploreArea longitude={dataToRender.longitude} latitude={dataToRender.latitude} />
-        <RoomsSection rooms={dataToRender.rooms} />
-        <PropertyDetails2
-          title={dataToRender.title}
-          rating={4.5} // Placeholder rating
-          reviewsCount={20} // Placeholder review count
-          reviewLink="#"
-          bedrooms={dataToRender.bedroomCount}
-          bathrooms={dataToRender.bathroomCount}
-          sleeps={dataToRender.guestCount}
-          guestCount={dataToRender.guestCount}
-          description={dataToRender.description}
-          size="2000 sq ft" // Replace with actual size data
-          amenities={dataToRender.amenities.map((amenity) => ({
-            icon: "fas fa-check", // Replace with appropriate icons if needed
-            label: amenity,
-          }))}
-        />
-        <PropertyManager
-  hostInfo={{ name: dataToRender.hostInfo }} // Pass an object with the 'name' property
-  title={dataToRender.title}
-  rating={4.5} // Placeholder rating
-  reviewsCount={20} // Placeholder review count
-  reviewLink="#"
-  bedrooms={dataToRender.bedroomCount}
-  bathrooms={dataToRender.bathroomCount}
-  sleeps={dataToRender.guestCount}
-  guestCount={dataToRender.guestCount}
-  description={dataToRender.description}
-  size="2000 sq ft" // Replace with actual size data
-  amenities={dataToRender.amenities.map((amenity) => ({
-    icon: "fas fa-check", // Replace with appropriate icons if needed
-    label: amenity,
-  }))}
-/>
-        <RentalDetails hostInfo={{ name: dataToRender.hostInfo }}  />
+        <div className="mb-8">
+          <Gallery images={dataToRender.images} title={dataToRender.title} />
+        </div>
+        <div className="mb-8">
+          <Tabs />
+        </div>
+        <div className="mb-8">
+          <PropertyDetails
+            title={dataToRender.title}
+            rating={4.5}
+            reviewsCount={20}
+            reviewLink="#"
+            bedrooms={dataToRender.bedroomCount}
+            bathrooms={dataToRender.bathroomCount}
+            sleeps={dataToRender.guestCount}
+            size="2000 sq ft"
+            amenities={dataToRender.amenities.map((amenity) => ({
+              icon: "fas fa-check",
+              label: amenity,
+            }))}
+          />
+        </div>
+        <div className="mb-8">
+          <ExploreArea
+            longitude={dataToRender.longitude}
+            latitude={dataToRender.latitude}
+          />
+        </div>
+        <div className="mb-8">
+          <RoomsSection rooms={dataToRender.rooms} />
+        </div>
+        <div className="mb-8">
+          <PropertyDetails2
+            title={dataToRender.title}
+            rating={4.5}
+            reviewsCount={20}
+            reviewLink="#"
+            bedrooms={dataToRender.bedroomCount}
+            bathrooms={dataToRender.bathroomCount}
+            sleeps={dataToRender.guestCount}
+            guestCount={dataToRender.guestCount}
+            description={dataToRender.description}
+            size="2000 sq ft"
+            amenities={dataToRender.amenities.map((amenity) => ({
+              icon: "fas fa-check",
+              label: amenity,
+            }))}
+          />
+        </div>
+        <div className="mb-8">
+          <PropertyManager
+            hostInfo={{ name: dataToRender.hostInfo }}
+            title={dataToRender.title}
+            rating={4.5}
+            reviewsCount={20}
+            reviewLink="#"
+            bedrooms={dataToRender.bedroomCount}
+            bathrooms={dataToRender.bathroomCount}
+            sleeps={dataToRender.guestCount}
+            guestCount={dataToRender.guestCount}
+            description={dataToRender.description}
+            size="2000 sq ft"
+            amenities={dataToRender.amenities.map((amenity) => ({
+              icon: "fas fa-check",
+              label: amenity,
+            }))}
+          />
+        </div>
+        <div className="mb-8">
+          <RentalDetails hostInfo={{ name: dataToRender.hostInfo }} />
+        </div>
       </div>
     </div>
   );
 }
+

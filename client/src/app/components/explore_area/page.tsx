@@ -17,9 +17,9 @@ const ExploreArea: React.FC<ExploreArea> = ({
       <h2 className="text-2xl font-semibold text-transparent-800 mb-6">Explore the area</h2>
       
       {/* Map Container */}
-      <div className="bg-gray-200 rounded-2xl overflow-hidden mb-6">
+      <div className="bg-gray-100 rounded-2xl overflow-hidden mb-6">
         <img
-          src="./map2.webp"
+          src="./map.jpg"
           alt="Map of Juneau area"
           className="w-full h-60 object-cover"
         />
