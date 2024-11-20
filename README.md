@@ -2,9 +2,10 @@
 
 This project consists of two parts:
 
-Frontend - A Next.js app that displays hotel details.
-Backend - A Node.js and Express.js API that serves hotel data.
-Requirements
+- Frontend - A Next.js app that displays hotel details.
+- Backend - A Node.js and Express.js API that serves hotel data.
+
+- Requirements
 Before you begin, ensure you have the following installed on your machine:
 
 Node.js (version 14.x or above)
