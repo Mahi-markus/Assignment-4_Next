@@ -108,6 +108,16 @@ http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411
 
 This should display the details for the hotel with the slug luxury-beach and that identifier
 
+## 6. Verify the custom error 404:
+The user need put slug or or hotel-id wrong
+for example:
+
+```bash
+
+http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411060b
+```
+
+
 ## Project Structure
 
 Frontend (Next.js)
