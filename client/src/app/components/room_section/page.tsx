@@ -35,16 +35,7 @@ const RoomsSection: React.FC<RoomsSectionProps> = ({ rooms }) => {
               <span>{`${room.roomBedroomCount} Beds`}</span>
             </div>
             {/* Room Images */}
-            <div className="flex items-center gap-3">
-              {room.roomImage.map((imgUrl, imgIndex) => (
-                <img
-                  key={imgIndex}
-                  src={imgUrl}
-                  alt={`${room.roomTitle} Image ${imgIndex + 1}`}
-                  className="w-24 h-16 object-cover rounded-md"
-                />
-              ))}
-            </div>
+           
           </div>
         </div>
       ))}
