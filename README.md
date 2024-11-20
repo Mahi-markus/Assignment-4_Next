@@ -93,8 +93,10 @@ For example, you can test the following URL:
 
 ```bash
 http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411060b9
-This should display the details for the hotel with the slug luxury-beach and identifier 0a242a2e-812c-4a7a-a9e2-89f4411060b9.
+
 ```
+
+This should display the details for the hotel with the slug luxury-beach and that identifier
 
 ## Project Structure
 
