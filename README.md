@@ -24,7 +24,7 @@ git clone https://github.com/Mahi-markus/assignment-4_next.git
 Navigate to the backend folder:
 
 ```bash
-cd backend
+cd server
 ```
 
 Install dependencies:
@@ -52,6 +52,10 @@ Navigate to the root folder of the project:
 ```bash
 cd ..
 ```
+Navigate to the frontend folder:
+```bash
+cd client
+```
 
 Install dependencies:
 
@@ -68,12 +72,18 @@ npm run dev
 The frontend will now be running on:
 
 ```bash
- http://localhost:3000.
+ http://localhost:3000
 ```
 
 ## 4. CORS Configuration
 
-Ensure that your backend API allows cross-origin requests from the frontend by using CORS. The backend should have a CORS middleware setup (which you mentioned is already done).
+Ensure that your backend(in sever folder) API allows cross-origin requests from the frontend by using CORS. The backend should have a CORS middleware setup (which you mentioned is already done).
+
+# cors installation:
+
+```bash
+npm install cors
+```
 
 ```bash
 const cors = require('cors');
