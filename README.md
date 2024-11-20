@@ -122,21 +122,21 @@ http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411
 
 ## Project Structure
 
-- Frontend (Next.js)
-The frontend application is a simple Next.js app that displays hotel details fetched from the backend API.
+ For Frontend (Next.js)
+The frontend application is a simple Next.js app that displays hotel details fetched from the backend API like below:
 
-/pages/hotel-details/[slug]/[identifier].js: The dynamic page that displays hotel information.
-Backend (Node.js & Express)
+- http://localhost:3000/hotel-details/[slug]/[identifier]
+ The dynamic page that displays hotel information.
 
-- The backend API is responsible for serving hotel data to the frontend.
 
-/api/hotel/{slug}/{identifier}: The API endpoint that provides hotel data based on slug and identifier.
-API Endpoints
+ For Backend (Node.js & Express)
 
-1. GET /hotel/{slug}/{identifier}
-   Fetches hotel details by slug and identifier.
+- The backend API is responsible for serving hotel data to the frontend like below:
 
-Example url:
+- http://localhost:3000/api/hotel/:hotelId
+
+
+Example to fetch data through frontend url:
 
 ```bash
 http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411060b9
