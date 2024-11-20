@@ -37,7 +37,12 @@ Start the API server on port 3001:
 
 ```bash
 npm run dev
-The backend API will now be running on http://localhost:3001.
+```
+
+The backend API will now be running on :
+
+```bash
+http://localhost:3001.
 ```
 
 ## 3. Set Up Frontend (Next.js)
@@ -60,8 +65,10 @@ Start the Next.js app on port 3000:
 npm run dev
 ```
 
+The frontend will now be running on:
+
 ```bash
-The frontend will now be running on http://localhost:3000.
+ http://localhost:3000.
 ```
 
 ## 4. CORS Configuration
