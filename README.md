@@ -1,4 +1,5 @@
 ### Hotel Details App
+
 This project consists of two parts:
 
 Frontend - A Next.js app that displays hotel details.
@@ -10,11 +11,10 @@ Node.js (version 14.x or above)
 npm (Node Package Manager)
 Installation Instructions
 
-1. Clone the Repository
+## 1. Clone the Repository
    Clone the repository to your local machine:
 
 ```bash
-Copy code
 git clone https://github.com/Mahi-markus/assignment-4_next.git
 ```
 
@@ -22,21 +22,18 @@ git clone https://github.com/Mahi-markus/assignment-4_next.git
    Navigate to the backend folder:
 
 ```bash
-Copy code
 cd backend
 ```
 
 Install dependencies:
 
 ```bash
-Copy code
 npm install
 ```
 
 Start the API server on port 3001:
 
 ```bash
-Copy code
 npm run dev
 The backend API will now be running on http://localhost:3001.
 ```
@@ -45,21 +42,18 @@ The backend API will now be running on http://localhost:3001.
    Navigate to the root folder of the project:
 
 ```bash
-Copy code
 cd ..
 ```
 
 Install dependencies:
 
 ```bash
-Copy code
 npm install
 ```
 
 Start the Next.js app on port 3000:
 
 ```bash
-Copy code
 npm run dev
 ```
 
@@ -71,7 +65,6 @@ The frontend will now be running on http://localhost:3000.
    Ensure that your backend API allows cross-origin requests from the frontend by using CORS. The backend should have a CORS middleware setup (which you mentioned is already done).
 
 ```bash
-Copy code
 const cors = require('cors');
 app.use(cors());
 ```
@@ -80,7 +73,6 @@ app.use(cors());
    Make sure the frontend can successfully fetch data from the backend API. The data will be displayed on hotel detail pages like this:
 
 ```bash
-Copy code
 http://localhost:3000/hotel-details/{slug}/{identifier}
 
 ```
@@ -88,7 +80,6 @@ http://localhost:3000/hotel-details/{slug}/{identifier}
 For example, you can test the following URL:
 
 ```bash
-Copy code
 http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411060b9
 This should display the details for the hotel with the slug luxury-beach and identifier 0a242a2e-812c-4a7a-a9e2-89f4411060b9.
 ```
@@ -110,7 +101,6 @@ API Endpoints
 Example url:
 
 ```bash
-Copy code
 http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411060b9
 
 ```
