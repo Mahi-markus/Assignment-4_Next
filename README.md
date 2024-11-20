@@ -1,4 +1,4 @@
-### Hotel Details App
+# Hotel Details App
 
 This project consists of two parts:
 
@@ -79,7 +79,7 @@ The frontend will now be running on:
 
 Ensure that your backend(in sever folder) API allows cross-origin requests from the frontend by using CORS. The backend should have a CORS middleware setup (which you mentioned is already done).
 
-# cors installation:
+### cors installation:
 
 ```bash
 npm install cors
