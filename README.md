@@ -5,11 +5,12 @@ This project consists of two parts:
 - Frontend - A Next.js app that displays hotel details.
 - Backend - A Node.js and Express.js API that serves hotel data.
 
-- Requirements
+- Requirements:
+
 Before you begin, ensure you have the following installed on your machine:
 
-Node.js (version 14.x or above)
-npm (Node Package Manager)
+- Node.js (version 14.x or above)
+- npm (Node Package Manager)
 Installation Instructions
 
 ## 1. Clone the Repository
@@ -121,12 +122,13 @@ http://localhost:3000/hotel-details/luxury-beach/0a242a2e-812c-4a7a-a9e2-89f4411
 
 ## Project Structure
 
-Frontend (Next.js)
+- Frontend (Next.js)
 The frontend application is a simple Next.js app that displays hotel details fetched from the backend API.
 
 /pages/hotel-details/[slug]/[identifier].js: The dynamic page that displays hotel information.
 Backend (Node.js & Express)
-The backend API is responsible for serving hotel data to the frontend.
+
+- The backend API is responsible for serving hotel data to the frontend.
 
 /api/hotel/{slug}/{identifier}: The API endpoint that provides hotel data based on slug and identifier.
 API Endpoints
